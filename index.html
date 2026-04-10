@@ -1855,7 +1855,7 @@
       <li><a href="#" class="dormant">Services</a></li>
       <li><a href="#" class="dormant">Projects</a></li>
       <li><a href="#" class="dormant">Contact</a></li>
-      <li><a href="#" class="nav-cta" id="openQuote">Get a Quote</a></li>
+      <li><a href="#" class="nav-cta" id="openQuote">Contact Us</a></li>
     </ul>
     <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -1869,7 +1869,7 @@
     <a href="#" class="dormant">Services</a>
     <a href="#" class="dormant">Projects</a>
     <a href="#" class="dormant">Contact</a>
-    <a href="#" class="mobile-cta" id="openQuoteMobile">Get a Quote</a>
+    <a href="#" class="mobile-cta" id="openQuoteMobile">Contact Us</a>
   </div>
 
   <!-- ─── HERO ──────────────────────────────────────────────────── -->
@@ -2257,197 +2257,76 @@
   </footer>
   <div class="footer-bar"></div>
 
-  <!-- ─── QUOTE DRAWER ───────────────────────────────────────────── -->
+  <!-- ─── CONTACT DRAWER ───────────────────────────────────────────── -->
   <div class="modal-backdrop" id="modalBackdrop"></div>
 
-  <div class="quote-drawer" id="quoteDrawer" role="dialog" aria-modal="true" aria-label="Get a Quote">
+  <div class="quote-drawer" id="quoteDrawer" role="dialog" aria-modal="true" aria-label="Contact Us">
     <div class="drawer-top-bar"></div>
 
     <div class="drawer-header">
       <div class="drawer-header-left">
-        <span class="drawer-eyebrow">Start Your Project</span>
-        <div class="drawer-title">Get a Quote</div>
+        <span class="drawer-eyebrow">Get In Touch</span>
+        <div class="drawer-title">Contact Us</div>
       </div>
       <button class="drawer-close" id="closeDrawer" aria-label="Close">&#x2715;</button>
     </div>
 
-    <div class="drawer-steps" id="drawerSteps">
-      <div class="step-item active" data-step="0">
-        <div class="step-num">1</div>
-        <span class="step-label">You</span>
-      </div>
-      <div class="step-line"></div>
-      <div class="step-item" data-step="1">
-        <div class="step-num">2</div>
-        <span class="step-label">Project</span>
-      </div>
-      <div class="step-line"></div>
-      <div class="step-item" data-step="2">
-        <div class="step-num">3</div>
-        <span class="step-label">Details</span>
-      </div>
-    </div>
-
     <div class="drawer-body" id="drawerBody">
+      <div class="step-intro" style="margin-bottom:1.8rem">
+        <p>Fill in your details and we'll get back to you within 24 hours.</p>
+      </div>
 
-      <!-- Step 1: Contact Info -->
-      <div class="form-step active" id="step-0">
-        <div class="step-intro">
-          <h3>Your Contact Details</h3>
-          <p>Tell us who you are so we can get back to you.</p>
-        </div>
-        <div class="d-row">
-          <div class="d-field">
-            <label>First Name <span class="req">*</span></label>
-            <input type="text" placeholder="e.g. James">
-          </div>
-          <div class="d-field">
-            <label>Last Name <span class="req">*</span></label>
-            <input type="text" placeholder="e.g. Mwangi">
-          </div>
+      <div class="d-row">
+        <div class="d-field">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" placeholder="e.g. James">
         </div>
         <div class="d-field">
-          <label>Email Address <span class="req">*</span></label>
-          <input type="email" placeholder="you@example.com">
-        </div>
-        <div class="d-field">
-          <label>Phone Number <span class="req">*</span></label>
-          <input type="tel" placeholder="+254 7XX XXX XXX">
-        </div>
-        <div class="d-field">
-          <label>How did you hear about us?</label>
-          <select>
-            <option value="">Select an option</option>
-            <option>Referral / Word of mouth</option>
-            <option>Facebook</option>
-            <option>Instagram</option>
-            <option>Google Search</option>
-            <option>Seen our work</option>
-            <option>Other</option>
-          </select>
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" placeholder="e.g. Mwangi">
         </div>
       </div>
 
-      <!-- Step 2: Project Type -->
-      <div class="form-step" id="step-1">
-        <div class="step-intro">
-          <h3>About Your Project</h3>
-          <p>Help us understand the scope and nature of your project.</p>
-        </div>
-        <div class="d-field">
-          <label>Project Type <span class="req">*</span></label>
-          <div class="tile-group">
-            <div class="tile-option" data-value="residential">
-              <div class="tile-check"></div>
-              <span class="tile-label">Residential</span>
-            </div>
-            <div class="tile-option" data-value="commercial">
-              <div class="tile-check"></div>
-              <span class="tile-label">Commercial</span>
-            </div>
-            <div class="tile-option" data-value="institutional">
-              <div class="tile-check"></div>
-              <span class="tile-label">Institutional</span>
-            </div>
-            <div class="tile-option" data-value="interiors">
-              <div class="tile-check"></div>
-              <span class="tile-label">Interiors</span>
-            </div>
-            <div class="tile-option" data-value="recreational">
-              <div class="tile-check"></div>
-              <span class="tile-label">Recreational</span>
-            </div>
-            <div class="tile-option" data-value="other">
-              <div class="tile-check"></div>
-              <span class="tile-label">Other</span>
-            </div>
-          </div>
-        </div>
-        <div class="d-field" style="margin-top:1.8rem">
-          <label>Service Required <span class="req">*</span></label>
-          <div class="tile-group">
-            <div class="tile-option" data-value="full-design">
-              <div class="tile-check"></div>
-              <span class="tile-label">Full Design</span>
-            </div>
-            <div class="tile-option" data-value="supervision">
-              <div class="tile-check"></div>
-              <span class="tile-label">Supervision Only</span>
-            </div>
-            <div class="tile-option" data-value="interior-only">
-              <div class="tile-check"></div>
-              <span class="tile-label">Interiors Only</span>
-            </div>
-            <div class="tile-option" data-value="consultation">
-              <div class="tile-check"></div>
-              <span class="tile-label">Consultation</span>
-            </div>
-          </div>
-        </div>
-        <div class="d-field" style="margin-top:1.8rem">
-          <label>Project Location</label>
-          <input type="text" placeholder="e.g. Kiambu, Nairobi, Mombasa...">
+      <div class="d-field">
+        <label>Email Address <span class="req">*</span></label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+
+      <div class="d-field">
+        <label>Phone Number <span class="req">*</span></label>
+        <input type="tel" placeholder="+254 7XX XXX XXX">
+      </div>
+
+      <div class="d-field">
+        <label>Project Type</label>
+        <div class="tile-group">
+          <div class="tile-option" data-value="residential"><div class="tile-check"></div><span class="tile-label">Residential</span></div>
+          <div class="tile-option" data-value="commercial"><div class="tile-check"></div><span class="tile-label">Commercial</span></div>
+          <div class="tile-option" data-value="institutional"><div class="tile-check"></div><span class="tile-label">Institutional</span></div>
+          <div class="tile-option" data-value="interiors"><div class="tile-check"></div><span class="tile-label">Interiors</span></div>
+          <div class="tile-option" data-value="renovation"><div class="tile-check"></div><span class="tile-label">Renovation</span></div>
+          <div class="tile-option" data-value="other"><div class="tile-check"></div><span class="tile-label">Other</span></div>
         </div>
       </div>
 
-      <!-- Step 3: Budget & Brief -->
-      <div class="form-step" id="step-2">
-        <div class="step-intro">
-          <h3>Scope &amp; Budget</h3>
-          <p>A rough idea of your budget and timeline helps us tailor our approach.</p>
-        </div>
-        <div class="d-field">
-          <label>Estimated Budget (KES)</label>
-          <div class="pill-group">
-            <div class="pill-option" data-value="under-2m">Under 2M</div>
-            <div class="pill-option" data-value="2m-5m">2M – 5M</div>
-            <div class="pill-option" data-value="5m-15m">5M – 15M</div>
-            <div class="pill-option" data-value="15m-50m">15M – 50M</div>
-            <div class="pill-option" data-value="50m+">50M+</div>
-            <div class="pill-option" data-value="tbd">Not sure yet</div>
-          </div>
-        </div>
-        <div class="d-field" style="margin-top:1.8rem">
-          <label>Preferred Start Timeline</label>
-          <div class="pill-group">
-            <div class="pill-option" data-value="asap">As soon as possible</div>
-            <div class="pill-option" data-value="1-3m">1 – 3 months</div>
-            <div class="pill-option" data-value="3-6m">3 – 6 months</div>
-            <div class="pill-option" data-value="6m+">6+ months</div>
-            <div class="pill-option" data-value="planning">Still planning</div>
-          </div>
-        </div>
-        <div class="d-field" style="margin-top:1.8rem">
-          <label>Project Brief</label>
-          <textarea placeholder="Describe your vision — size, style preferences, number of rooms, special requirements..."></textarea>
-        </div>
-        <div class="d-field">
-          <label>Plot / Land Status</label>
-          <select>
-            <option value="">Select an option</option>
-            <option>I own the land / plot</option>
-            <option>In the process of buying land</option>
-            <option>Looking for land</option>
-            <option>Renovating an existing structure</option>
-            <option>Not applicable</option>
-          </select>
-        </div>
+      <div class="d-field" style="margin-top:1.4rem">
+        <label>Tell Us About Your Project <span class="req">*</span></label>
+        <textarea style="height:120px" placeholder="Describe your project — location, size, style preferences, timeline, or anything else you'd like us to know..."></textarea>
       </div>
 
     </div><!-- end drawer-body -->
 
-    <!-- Success state (hidden initially) -->
+    <!-- Success state -->
     <div class="drawer-success" id="drawerSuccess">
       <div class="success-icon">✓</div>
-      <div class="drawer-title">Enquiry Received</div>
-      <p class="success-body">Thank you for reaching out to Arcscene Architects. We'll review your project brief and get back to you within 24 hours.</p>
+      <div class="drawer-title">Message Sent</div>
+      <p class="success-body">Thank you for reaching out to Arcscene Architects. We'll be in touch within 24 hours.</p>
       <button class="success-close" id="successClose">Close</button>
     </div>
 
     <div class="drawer-footer" id="drawerFooter">
-      <button class="drawer-back" id="drawerBack" style="display:none">&#8592; Back</button>
       <button class="drawer-next" id="drawerNext">
-        Next <span class="arrow">&#8594;</span>
+        Send Message <span class="arrow">&#8594;</span>
       </button>
     </div>
   </div>
@@ -2623,73 +2502,44 @@
       });
     });
 
-    // ── Quote Drawer ─────────────────────────────────────────────
+    // ── Contact Drawer ───────────────────────────────────────────
     (function () {
-      const drawer    = document.getElementById('quoteDrawer');
-      const backdrop  = document.getElementById('modalBackdrop');
-      const openBtn   = document.getElementById('openQuote');
-      const closeBtn  = document.getElementById('closeDrawer');
-      const nextBtn   = document.getElementById('drawerNext');
-      const backBtn   = document.getElementById('drawerBack');
-      const footer    = document.getElementById('drawerFooter');
-      const stepsEl   = document.getElementById('drawerSteps');
-      const bodyEl    = document.getElementById('drawerBody');
-      const successEl = document.getElementById('drawerSuccess');
+      const drawer     = document.getElementById('quoteDrawer');
+      const backdrop   = document.getElementById('modalBackdrop');
+      const openBtn    = document.getElementById('openQuote');
+      const closeBtn   = document.getElementById('closeDrawer');
+      const sendBtn    = document.getElementById('drawerNext');
+      const bodyEl     = document.getElementById('drawerBody');
+      const footerEl   = document.getElementById('drawerFooter');
+      const successEl  = document.getElementById('drawerSuccess');
       const successClose = document.getElementById('successClose');
-      const stepItems = document.querySelectorAll('.step-item');
-      const TOTAL     = 3;
-      let current     = 0;
 
       function openDrawer() {
         drawer.classList.add('open');
         backdrop.classList.add('open');
         document.body.style.overflow = 'hidden';
-        goToStep(0);
+        bodyEl.scrollTop = 0;
       }
 
       function closeDrawer() {
         drawer.classList.remove('open');
         backdrop.classList.remove('open');
         document.body.style.overflow = '';
-      }
-
-      function goToStep(n) {
-        // Hide all steps
-        document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-        // Show target step
-        const target = document.getElementById('step-' + n);
-        if (target) target.classList.add('active');
-
-        // Update step indicators
-        stepItems.forEach((item, i) => {
-          item.classList.remove('active', 'done');
-          if (i < n)      item.classList.add('done');
-          else if (i === n) item.classList.add('active');
-        });
-
-        // Back button visibility
-        backBtn.style.display = n > 0 ? 'block' : 'none';
-
-        // Next button label
-        if (n === TOTAL - 1) {
-          nextBtn.innerHTML = 'Submit Enquiry <span class="arrow">&#10003;</span>';
-        } else {
-          nextBtn.innerHTML = 'Next <span class="arrow">&#8594;</span>';
-        }
-
-        // Scroll body to top
-        bodyEl.scrollTop = 0;
-        current = n;
+        // Reset success state
+        setTimeout(() => {
+          successEl.classList.remove('show');
+          bodyEl.style.display = '';
+          footerEl.style.display = '';
+        }, 500);
       }
 
       function showSuccess() {
-        stepsEl.style.display  = 'none';
-        bodyEl.style.display   = 'none';
-        footer.style.display   = 'none';
+        bodyEl.style.display  = 'none';
+        footerEl.style.display = 'none';
         successEl.classList.add('show');
       }
 
-      // Tile selection (single-select per group)
+      // Tile selection
       document.querySelectorAll('.tile-group').forEach(group => {
         group.querySelectorAll('.tile-option').forEach(tile => {
           tile.addEventListener('click', () => {
@@ -2699,20 +2549,8 @@
         });
       });
 
-      // Pill selection (single-select per group)
-      document.querySelectorAll('.pill-group').forEach(group => {
-        group.querySelectorAll('.pill-option').forEach(pill => {
-          pill.addEventListener('click', () => {
-            group.querySelectorAll('.pill-option').forEach(p => p.classList.remove('selected'));
-            pill.classList.add('selected');
-          });
-        });
-      });
-
-      // Events
       openBtn.addEventListener('click', e => { e.preventDefault(); openDrawer(); });
 
-      // Mobile CTA also opens drawer
       const openBtnMobile = document.getElementById('openQuoteMobile');
       if (openBtnMobile) {
         openBtnMobile.addEventListener('click', e => {
@@ -2721,30 +2559,12 @@
           openDrawer();
         });
       }
+
       closeBtn.addEventListener('click', closeDrawer);
       backdrop.addEventListener('click', closeDrawer);
       successClose.addEventListener('click', closeDrawer);
+      sendBtn.addEventListener('click', showSuccess);
 
-      nextBtn.addEventListener('click', () => {
-        if (current < TOTAL - 1) {
-          goToStep(current + 1);
-        } else {
-          showSuccess();
-        }
-      });
-
-      backBtn.addEventListener('click', () => {
-        if (current > 0) goToStep(current - 1);
-      });
-
-      // Step indicator click
-      stepItems.forEach((item, i) => {
-        item.addEventListener('click', () => {
-          if (i <= current) goToStep(i);
-        });
-      });
-
-      // ESC to close
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape') closeDrawer();
       });
