@@ -121,27 +121,28 @@
     }
 
     .nav-links a {
-      color: rgba(255,255,255,0.82);
+      color: #ffffff;
       text-decoration: none;
-      font-size: 0.72rem;
+      font-size: 0.82rem;
       font-weight: 400;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      transition: opacity 0.2s, color 0.2s;
+      transition: color 0.2s;
       white-space: nowrap;
     }
 
-    .nav-links a:hover { color: var(--red); opacity: 1; }
-
-    #nav.scrolled .nav-links a { color: var(--white); opacity: 0.65; }
-    #nav.scrolled .nav-links a:hover { opacity: 1; color: var(--red); }
+    .nav-links a:hover { color: var(--red); }
 
     /* Dormant nav links — visible but non-interactive */
     .nav-links a.dormant {
-      opacity: 0.45;
+      color: rgba(255,255,255,0.6);
       pointer-events: none;
       cursor: default;
     }
+
+    #nav.scrolled .nav-links a { color: #1a1a1a; }
+    #nav.scrolled .nav-links a.dormant { color: rgba(20,20,20,0.5); }
+    #nav.scrolled .nav-links a:hover { color: var(--red); }
 
     .nav-links .nav-cta {
       opacity: 1;
