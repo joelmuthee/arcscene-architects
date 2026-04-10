@@ -627,15 +627,16 @@
     .stat {
       padding: 1.8rem 0;
       border-right: 1px solid var(--border);
-      padding-right: 1.5rem;
-      margin-right: 1.5rem;
+      padding-right: 1rem;
+      overflow: hidden;
+      min-width: 0;
     }
 
-    .stat:last-child { border-right: none; margin-right: 0; }
+    .stat:last-child { border-right: none; }
 
     .stat-number {
       font-family: 'Bebas Neue', cursive;
-      font-size: 3.8rem;
+      font-size: clamp(2rem, 5vw, 3.8rem);
       line-height: 1;
       color: var(--red);
       display: block;
