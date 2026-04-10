@@ -625,11 +625,14 @@
     }
 
     .stat {
-      padding: 1.8rem 0;
+      padding: 1.8rem 0.5rem;
       border-right: 1px solid var(--border);
-      padding-right: 1rem;
       overflow: hidden;
       min-width: 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .stat:last-child { border-right: none; }
@@ -649,6 +652,7 @@
       color: var(--gray);
       margin-top: 0.4rem;
       display: block;
+      text-align: center;
     }
 
     /* About image block */
