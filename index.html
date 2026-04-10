@@ -93,15 +93,17 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.6rem 3rem;
-      background: rgba(245,243,239,0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      transition: padding 0.3s;
+      background: transparent;
+      backdrop-filter: none;
+      border-bottom: 1px solid transparent;
+      transition: padding 0.4s, background 0.4s, border-color 0.4s, backdrop-filter 0.4s;
     }
 
     #nav.scrolled {
       padding: 0.4rem 3rem;
-      background: rgba(245,243,239,0.98);
+      background: rgba(245,243,239,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-logo img {
@@ -119,18 +121,20 @@
     }
 
     .nav-links a {
-      color: var(--white);
+      color: rgba(255,255,255,0.82);
       text-decoration: none;
       font-size: 0.72rem;
       font-weight: 400;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      opacity: 0.65;
       transition: opacity 0.2s, color 0.2s;
       white-space: nowrap;
     }
 
-    .nav-links a:hover { opacity: 1; color: var(--red); }
+    .nav-links a:hover { color: var(--red); opacity: 1; }
+
+    #nav.scrolled .nav-links a { color: var(--white); opacity: 0.65; }
+    #nav.scrolled .nav-links a:hover { opacity: 1; color: var(--red); }
 
     /* Dormant nav links — visible but non-interactive */
     .nav-links a.dormant {
@@ -166,9 +170,11 @@
       display: block;
       width: 24px;
       height: 1.5px;
-      background: var(--white);
-      transition: transform 0.3s, opacity 0.3s;
+      background: rgba(255,255,255,0.85);
+      transition: transform 0.3s, opacity 0.3s, background 0.4s;
     }
+
+    #nav.scrolled .nav-hamburger span { background: var(--white); }
 
     .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
@@ -392,6 +398,7 @@
       font-size: clamp(2.8rem, 5vw, 5.2rem);
       line-height: 1.05;
       letter-spacing: 0.04em;
+      color: #F5F3EF;
       opacity: 0;
       animation: fadeUp 0.9s 0.6s ease forwards;
     }
@@ -437,7 +444,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.8rem;
-      color: var(--white);
+      color: rgba(245,243,239,0.75);
       text-decoration: none;
       font-size: 0.73rem;
       letter-spacing: 0.18em;
