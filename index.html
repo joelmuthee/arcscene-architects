@@ -2423,11 +2423,7 @@
         if (e.isIntersecting) {
           e.target.classList.add('visible');
         } else {
-          // Only reset when element has gone back below the viewport
-          // (user scrolled up — element dropped off the bottom)
-          if (e.boundingClientRect.top > 0) {
-            e.target.classList.remove('visible');
-          }
+          e.target.classList.remove('visible');
         }
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
