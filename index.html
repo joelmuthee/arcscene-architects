@@ -215,27 +215,24 @@
 
     .mobile-nav-close:hover { border-color: var(--red); color: var(--red); }
 
-    /* Mobile nav text is always light (dark panel) */
-    .mobile-nav a { color: #F5F3EF; }
-
     .mobile-nav.open {
       opacity: 1;
       pointer-events: all;
     }
 
+    /* Mobile nav is always dark panel — hardcode light text */
     .mobile-nav a {
       font-family: 'Bebas Neue', cursive;
       font-size: 3rem;
       letter-spacing: 0.1em;
-      color: var(--white);
+      color: rgba(245,243,239,0.75);
       text-decoration: none;
-      opacity: 0.4;
       transition: opacity 0.2s, color 0.2s;
     }
 
-    .mobile-nav a:not(.dormant):hover { opacity: 1; color: var(--red); }
+    .mobile-nav a:not(.dormant):hover { color: #fff; }
 
-    .mobile-nav a.dormant { opacity: 0.15; pointer-events: none; }
+    .mobile-nav a.dormant { color: rgba(245,243,239,0.2); pointer-events: none; }
 
     .mobile-nav .mobile-cta {
       opacity: 1;
@@ -456,6 +453,24 @@
     .btn-ghost::after { content: '→'; transition: transform 0.2s; }
     .btn-ghost:hover { opacity: 1; }
     .btn-ghost:hover::after { transform: translateX(5px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid rgba(245,243,239,0.55);
+      color: rgba(245,243,239,0.9);
+      text-decoration: none;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 1rem 2.4rem;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: #fff;
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
 
     /* Hero scroll indicator */
     .hero-scroll {
@@ -1822,7 +1837,7 @@
       <p class="hero-sub">Architecture that transforms the ordinary into the extraordinary — from concept to completion.</p>
       <div class="hero-actions">
         <a href="#portfolio" class="btn-primary">View Projects</a>
-        <a href="#contact" class="btn-ghost">Start a Project</a>
+        <a href="#contact" class="btn-outline">Start a Project</a>
       </div>
     </div>
     <div class="hero-scroll">
