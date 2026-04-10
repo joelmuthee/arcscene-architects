@@ -191,7 +191,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 1.4rem;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.35s ease;
@@ -223,11 +223,11 @@
     /* Mobile nav is always dark panel — hardcode light text */
     .mobile-nav a {
       font-family: 'Bebas Neue', cursive;
-      font-size: 3rem;
-      letter-spacing: 0.1em;
-      color: rgba(245,243,239,0.75);
+      font-size: clamp(1.6rem, 7vw, 2.2rem);
+      letter-spacing: 0.12em;
+      color: rgba(245,243,239,0.7);
       text-decoration: none;
-      transition: opacity 0.2s, color 0.2s;
+      transition: color 0.2s;
     }
 
     .mobile-nav a:not(.dormant):hover { color: #fff; }
@@ -238,8 +238,8 @@
       opacity: 1;
       background: var(--red);
       color: #fff;
-      padding: 0.8rem 2.5rem;
-      font-size: 1rem;
+      padding: 0.7rem 2rem;
+      font-size: 0.85rem;
       letter-spacing: 0.15em;
       margin-top: 1rem;
     }
