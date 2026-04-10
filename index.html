@@ -905,6 +905,51 @@
       color: #F5F3EF; /* always light — sits on dark overlay */
     }
 
+    /* Expanded portfolio grid */
+    .portfolio-expanded {
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .portfolio-expanded.open { display: grid; }
+
+    .portfolio-expanded .proj { height: 260px; }
+
+    /* See more / see less button */
+    .portfolio-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+
+    .btn-see-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .btn-see-more:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    .btn-see-more .arrow { transition: transform 0.3s; }
+    .btn-see-more.open .arrow { transform: rotate(180deg); }
+
     /* ─── FEATURED STRIP ─────────────────────────────────────── */
     .featured-strip {
       display: grid;
@@ -1039,11 +1084,13 @@
 
     .c-val a {
       color: inherit;
-      text-decoration: none;
-      transition: color 0.2s;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(20,20,20,0.25);
+      transition: color 0.2s, text-decoration-color 0.2s;
     }
 
-    .c-val a:hover { color: var(--red); }
+    .c-val a:hover { color: var(--red); text-decoration-color: var(--red); }
 
     /* Form */
     .contact-form-wrap {
@@ -1763,13 +1810,27 @@
       .featured-heading { font-size: 2.2rem; }
 
       .contact { padding: 4.5rem 1.5rem; }
-      .contact-form-wrap { padding: 2rem 1.5rem; }
+      .contact-form-wrap { padding: 2rem 1.5rem; text-align: center; }
       .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrap .field label { text-align: left; }
+      .contact-form-wrap .btn-submit { text-align: center; }
 
       footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
       .footer-nav { justify-content: center; }
 
+      /* Expanded portfolio grid — 2 columns on mobile */
+      .portfolio-expanded { grid-template-columns: 1fr 1fr; }
+      .portfolio-expanded .proj { height: 180px; }
+
       .cursor, .cursor-ring { display: none; }
+    }
+
+    /* ─── OVERFLOW FIX ───────────────────────────────────────── */
+    html, body { overflow-x: hidden; max-width: 100%; }
+    .hero, .ticker, .about, .services, .portfolio,
+    .featured-strip, .contact, footer, .map-section {
+      max-width: 100%;
+      overflow-x: hidden;
     }
   </style>
 </head>
@@ -1996,55 +2057,119 @@
       </div>
     </div>
     <div class="portfolio-grid">
-
       <div class="proj">
-        <img src="images/482224713_1305253164102894_8341431391914025069_n.jpg" alt="Neo-Classical Residence render">
-        <div class="proj-overlay">
-          <span class="proj-cat">Residential · Architectural Render</span>
-          <span class="proj-name">Neo-Classical Residence</span>
-        </div>
+        <img src="images/482224713_1305253164102894_8341431391914025069_n.jpg" alt="Neo-Classical Residence">
+        <div class="proj-overlay"><span class="proj-cat">Residential · Render</span><span class="proj-name">Neo-Classical Residence</span></div>
       </div>
-
       <div class="proj">
-        <img src="images/481988550_1305252950769582_5473036750822261699_n.jpg" alt="Grand Villa render">
-        <div class="proj-overlay">
-          <span class="proj-cat">Residential · Render</span>
-          <span class="proj-name">Grand Villa Project</span>
-        </div>
+        <img src="images/481988550_1305252950769582_5473036750822261699_n.jpg" alt="Grand Villa">
+        <div class="proj-overlay"><span class="proj-cat">Residential · Render</span><span class="proj-name">Grand Villa</span></div>
       </div>
-
       <div class="proj">
-        <img src="images/480325945_2565057297032840_4554446642606173748_n.jpg" alt="Modern Townhouses">
-        <div class="proj-overlay">
-          <span class="proj-cat">Residential · Development</span>
-          <span class="proj-name">Contemporary Townhouses</span>
-        </div>
+        <img src="images/480325945_2565057297032840_4554446642606173748_n.jpg" alt="Contemporary Townhouses">
+        <div class="proj-overlay"><span class="proj-cat">Residential · Development</span><span class="proj-name">Contemporary Townhouses</span></div>
       </div>
-
       <div class="proj">
         <img src="images/481667042_2571376366400933_3980928286602758610_n.jpg" alt="Luxury Interior">
-        <div class="proj-overlay">
-          <span class="proj-cat">Interiors · Residential</span>
-          <span class="proj-name">Luxury Interior Fit-Out</span>
-        </div>
+        <div class="proj-overlay"><span class="proj-cat">Interiors · Residential</span><span class="proj-name">Luxury Interior Fit-Out</span></div>
       </div>
-
       <div class="proj">
-        <img src="images/480877869_1305252947436249_3684706204528199077_n.jpg" alt="Modern Family Bungalow">
-        <div class="proj-overlay">
-          <span class="proj-cat">Residential · Render</span>
-          <span class="proj-name">Modern Family Bungalow</span>
-        </div>
+        <img src="images/480877869_1305252947436249_3684706204528199077_n.jpg" alt="Modern Bungalow">
+        <div class="proj-overlay"><span class="proj-cat">Residential · Render</span><span class="proj-name">Modern Family Bungalow</span></div>
       </div>
-
       <div class="proj">
         <img src="images/474608026_1280900143204863_2689915746802423068_n.jpg" alt="Institutional Development">
-        <div class="proj-overlay">
-          <span class="proj-cat">Institutional · Commercial</span>
-          <span class="proj-name">Institutional Development</span>
-        </div>
+        <div class="proj-overlay"><span class="proj-cat">Institutional · Commercial</span><span class="proj-name">Institutional Development</span></div>
       </div>
+    </div>
 
+    <!-- Expanded grid — all remaining project images -->
+    <div class="portfolio-expanded" id="portfolioExpanded">
+      <div class="proj"><img src="images/480594274_1305253170769560_1346624224606702934_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Hillside Residence</span></div></div>
+      <div class="proj"><img src="images/481181343_1305253084102902_1745478816040530915_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential · Render</span><span class="proj-name">Contemporary Villa</span></div></div>
+      <div class="proj"><img src="images/481304028_1305253087436235_7735726005695115092_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Modern Estate</span></div></div>
+      <div class="proj"><img src="images/481764097_1305253097436234_432309040442376448_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential · Render</span><span class="proj-name">Family Home Design</span></div></div>
+      <div class="proj"><img src="images/482222990_2583239058547997_9017092104429556883_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential · Built</span><span class="proj-name">Completed Residence</span></div></div>
+      <div class="proj"><img src="images/482233214_2583239231881313_4594962689333774447_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Stone Clad Villa</span></div></div>
+      <div class="proj"><img src="images/482235075_2583239365214633_8731859718922926605_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Nairobi Residence</span></div></div>
+      <div class="proj"><img src="images/482238887_2583239348547968_1166060716423077696_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Modern Bungalow II</span></div></div>
+      <div class="proj"><img src="images/482239173_2583239041881332_6943873093924154483_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential · Built</span><span class="proj-name">Residential Development</span></div></div>
+      <div class="proj"><img src="images/482253964_2583239355214634_2216386657840225998_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Estate House</span></div></div>
+      <div class="proj"><img src="images/480323827_1297972548164289_7327765646845866436_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential · Render</span><span class="proj-name">Modern Duplex</span></div></div>
+      <div class="proj"><img src="images/480377325_1297972498164294_3215743545071792029_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Gated Villa</span></div></div>
+      <div class="proj"><img src="images/480419643_1297972491497628_7065765401429296147_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Luxury Bungalow</span></div></div>
+      <div class="proj"><img src="images/480426487_2565057280366175_5959872069159525375_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential · Built</span><span class="proj-name">Thika Road Project</span></div></div>
+      <div class="proj"><img src="images/480522489_2565057240366179_3864652101286308874_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Corner Townhouse</span></div></div>
+      <div class="proj"><img src="images/480867638_2571376416400928_7395429951858120893_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Interiors</span><span class="proj-name">Living Space Design</span></div></div>
+      <div class="proj"><img src="images/480913741_2571376263067610_5843073048161831617_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Interiors</span><span class="proj-name">Master Suite</span></div></div>
+      <div class="proj"><img src="images/481072303_2571376479734255_6685145171666811700_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Interiors</span><span class="proj-name">Open Plan Kitchen</span></div></div>
+      <div class="proj"><img src="images/481072983_2571376213067615_5897590794443521523_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Interiors</span><span class="proj-name">Dining Area</span></div></div>
+      <div class="proj"><img src="images/481304028_1305253087436235_7735726005695115092_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Nairobi Suburbs Project</span></div></div>
+      <div class="proj"><img src="images/481467601_2571376343067602_597935732377349676_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Interiors</span><span class="proj-name">Feature Staircase</span></div></div>
+      <div class="proj"><img src="images/120037432_1413936512144930_8126038958145818621_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential · Render</span><span class="proj-name">Maisonette Design</span></div></div>
+      <div class="proj"><img src="images/120059511_1413939582144623_3420743968583530396_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Modern Terrace</span></div></div>
+      <div class="proj"><img src="images/120087279_1413939682144613_2004409206249726978_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Suburban Home</span></div></div>
+      <div class="proj"><img src="images/120092079_1413936508811597_4270292837936866595_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Detached House</span></div></div>
+      <div class="proj"><img src="images/120096034_1413939565477958_2652652684717006898_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Family Residence</span></div></div>
+      <div class="proj"><img src="images/120108003_1413939845477930_458651969516440865_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Bungalow with Annex</span></div></div>
+      <div class="proj"><img src="images/120112751_1413936615478253_2881987907994989530_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Two-Storey Home</span></div></div>
+      <div class="proj"><img src="images/120121406_1413939708811277_719526713190636205_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Corner Plot Residence</span></div></div>
+      <div class="proj"><img src="images/120127671_1413939652144616_8785216763127707537_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Kiambu Road Project</span></div></div>
+      <div class="proj"><img src="images/120139142_1413936562144925_8358576628379193205_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Semi-Detached Pair</span></div></div>
+      <div class="proj"><img src="images/120142730_1413936448811603_6322927466515596039_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Gated Estate Unit</span></div></div>
+      <div class="proj"><img src="images/120159239_1413939842144597_4604113232854892084_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Studio Annex</span></div></div>
+      <div class="proj"><img src="images/120188632_1413936462144935_8450190845893673462_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">L-Shaped Bungalow</span></div></div>
+      <div class="proj"><img src="images/120188632_1413936572144924_2967134240970751442_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Roofdeck Residence</span></div></div>
+      <div class="proj"><img src="images/119990269_1413939625477952_5739282261084768936_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Commercial</span><span class="proj-name">Commercial Block</span></div></div>
+      <div class="proj"><img src="images/102394857_1327369637468285_3600104845142785899_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Estate House Design</span></div></div>
+      <div class="proj"><img src="images/102585660_1327369680801614_8353776333888805549_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Parklands Residence</span></div></div>
+      <div class="proj"><img src="images/94993868_1298795163659066_7187962120175091712_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Modern 4-Bed Home</span></div></div>
+      <div class="proj"><img src="images/95013354_1298795143659068_41465602845442048_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Ridgeline Bungalow</span></div></div>
+      <div class="proj"><img src="images/95781306_1298794256992490_6318548271451078656_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Modern Family Home</span></div></div>
+      <div class="proj"><img src="images/90163081_1267917836746799_4120031895054450688_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Thika Greens II</span></div></div>
+      <div class="proj"><img src="images/90338604_1267917903413459_5835005747867418624_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Riverside Residence</span></div></div>
+      <div class="proj"><img src="images/90388634_1267917830080133_6003018967201873920_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Highland House</span></div></div>
+      <div class="proj"><img src="images/89910296_1260040304201219_2822655530588176384_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Nairobi Suburb Home</span></div></div>
+      <div class="proj"><img src="images/67249756_1071863416352243_1884239712244203520_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Detached Villa</span></div></div>
+      <div class="proj"><img src="images/67258352_1071863363018915_8970370073386549248_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Maisonette Block</span></div></div>
+      <div class="proj"><img src="images/67262783_1071863156352269_5611740067782459392_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Corner Villa</span></div></div>
+      <div class="proj"><img src="images/67276627_1071863323018919_1827582831547645952_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Garden Bungalow</span></div></div>
+      <div class="proj"><img src="images/67339248_1071863519685566_8126109537422802944_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Commercial</span><span class="proj-name">Commercial Development</span></div></div>
+      <div class="proj"><img src="images/56952736_1008031906068728_369225049808306176_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Bungalow Design</span></div></div>
+      <div class="proj"><img src="images/56980788_1008031816068737_9128265530887634944_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Four-Bedroom Home</span></div></div>
+      <div class="proj"><img src="images/57079797_1008031899402062_6700735188961329152_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Contemporary House</span></div></div>
+      <div class="proj"><img src="images/57289358_1008031766068742_5013923879089864704_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Nairobi Home Design</span></div></div>
+      <div class="proj"><img src="images/57291139_1008031779402074_8381104842457743360_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Terraced House</span></div></div>
+      <div class="proj"><img src="images/57378660_1008031872735398_5395366143760269312_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Compact Modern Home</span></div></div>
+      <div class="proj"><img src="images/57484657_1008031856068733_7140838795565334528_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Gated Bungalow</span></div></div>
+      <div class="proj"><img src="images/57485371_1008031796068739_309529299361202176_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Double Storey Residence</span></div></div>
+      <div class="proj"><img src="images/53630592_986915274847058_7414875082192846848_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Modern Semi-Detached</span></div></div>
+      <div class="proj"><img src="images/53713850_986915241513728_2902631605505884160_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Standalone Villa</span></div></div>
+      <div class="proj"><img src="images/53761246_986915344847051_6044051804847603712_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Masonry Bungalow</span></div></div>
+      <div class="proj"><img src="images/53777540_986915051513747_5649706500642308096_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Langa'ta Residence</span></div></div>
+      <div class="proj"><img src="images/53796671_986915048180414_7010177274716618752_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Three-Bed Bungalow</span></div></div>
+      <div class="proj"><img src="images/53921446_986915181513734_1157738052731273216_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">L-Plan Residence</span></div></div>
+      <div class="proj"><img src="images/54256004_986915134847072_5301640787606372352_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Flat Roof Modern</span></div></div>
+      <div class="proj"><img src="images/54256457_986915078180411_7946460624618258432_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Open Plan Home</span></div></div>
+      <div class="proj"><img src="images/54256964_986915288180390_4338377445288706048_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Hillcrest Home</span></div></div>
+      <div class="proj"><img src="images/54462376_986915184847067_43715409794301952_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Suburban Bungalow</span></div></div>
+      <div class="proj"><img src="images/45522248_912517075620212_4211975136133251072_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Classic Villa Design</span></div></div>
+      <div class="proj"><img src="images/45542377_912517172286869_153932744580136960_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Garden Terrace Home</span></div></div>
+      <div class="proj"><img src="images/45543874_912517225620197_5674025580429836288_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Nairobi Residence</span></div></div>
+      <div class="proj"><img src="images/45564882_912517118953541_8451858488719572992_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Modern Courtyard Home</span></div></div>
+      <div class="proj"><img src="images/45568531_912517318953521_5487390632735408128_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Executive Bungalow</span></div></div>
+      <div class="proj"><img src="images/45572526_912517022286884_119595709409263616_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Flat Roof Residence</span></div></div>
+      <div class="proj"><img src="images/45632388_912516978953555_6557998470639124480_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Double Storey Villa</span></div></div>
+      <div class="proj"><img src="images/45636900_912517248953528_7047912921803784192_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Parkview Residence</span></div></div>
+      <div class="proj"><img src="images/45650808_912517148953538_6142391227187724288_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Contemporary Bungalow</span></div></div>
+      <div class="proj"><img src="images/45654752_912517198953533_7342952534811607040_n.jpg" alt=""><div class="proj-overlay"><span class="proj-cat">Residential</span><span class="proj-name">Modern Estate Home</span></div></div>
+    </div>
+
+    <div class="portfolio-toggle">
+      <button class="btn-see-more" id="portfolioToggle">
+        <span class="label">View All 79 Projects</span>
+        <span class="arrow">↓</span>
+      </button>
     </div>
   </section>
 
@@ -2175,7 +2300,7 @@
     <div class="footer-logo">
       <img src="images/Logo.jpg" alt="Arcscene Architects (K) Ltd">
     </div>
-    <span class="footer-copy">© 2025 Arcscene Architects (K) Ltd. All rights reserved.</span>
+    <span class="footer-copy">© 2025 Arcscene Architects (K) Ltd. All rights reserved. &nbsp;·&nbsp; Designed by <a href="https://essenceautomations.com/websites" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.45);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;" onmouseover="this.style.color='#CC1111'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Essence Automations</a></span>
     <nav class="footer-nav">
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -2675,6 +2800,19 @@
       // ESC to close
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape') closeDrawer();
+      });
+    })();
+
+    // ── Portfolio expand / collapse ───────────────────────────
+    (() => {
+      const btn = document.getElementById('portfolioToggle');
+      const grid = document.getElementById('portfolioExpanded');
+      if (!btn || !grid) return;
+      btn.addEventListener('click', () => {
+        const isOpen = grid.classList.toggle('open');
+        btn.classList.toggle('open', isOpen);
+        btn.querySelector('.label').textContent = isOpen ? 'Show Less' : 'View All 79 Projects';
+        btn.querySelector('.arrow').textContent = isOpen ? '↑' : '↓';
       });
     })();
   </script>
