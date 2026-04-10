@@ -1,0 +1,2649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcscene Architects (K) Ltd — Architecture · Interiors · Planning</title>
+  <meta name="description" content="BORAQs-registered architectural firm in Nairobi. We design and deliver residential, commercial, and institutional projects across Kenya.">
+
+  <!-- Open Graph / WhatsApp / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Arcscene Architects (K) Ltd – Architecture · Interiors · Planning">
+  <meta property="og:description" content="BORAQs-registered architectural firm based in Nairobi offering design and project management for residential, commercial, and institutional projects.">
+  <meta property="og:image" content="https://joelmuthee.github.io/arcscene-architects/images/482224713_1305253164102894_8341431391914025069_n.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://joelmuthee.github.io/arcscene-architects/">
+  <meta property="og:site_name" content="Arcscene Architects (K) Ltd">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://joelmuthee.github.io/arcscene-architects/images/482224713_1305253164102894_8341431391914025069_n.jpg">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:      #0a0a0a;
+      --deep:       #111111;
+      --red:        #CC1111;
+      --red-dark:   #a00e0e;
+      --white:      #F0EDE8;
+      --gray:       #777;
+      --border:     rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    /* ─── CUSTOM CURSOR ─────────────────────────────────────── */
+    .cursor {
+      width: 8px; height: 8px;
+      background: var(--red);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, background 0.2s;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(204,17,17,0.5);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, width 0.3s, height 0.3s, border-color 0.3s;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 3rem;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+
+    #nav.scrolled {
+      padding: 0.4rem 3rem;
+    }
+
+    .nav-logo img {
+      height: 80px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.4rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      transition: opacity 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--red); }
+
+    /* Dormant nav links — visible but non-interactive */
+    .nav-links a.dormant {
+      opacity: 0.45;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .nav-links .nav-cta {
+      opacity: 1;
+      background: var(--red);
+      color: #fff;
+      padding: 0.55rem 1.4rem;
+      letter-spacing: 0.12em;
+      transition: background 0.2s;
+    }
+    .nav-links .nav-cta:hover { background: var(--red-dark); color: #fff; }
+
+    /* ── Hamburger (mobile) ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 600;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--white);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile nav panel */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,10,10,0.98);
+      z-index: 550;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .mobile-nav-close {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.5rem;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--white);
+      width: 42px; height: 42px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .mobile-nav-close:hover { border-color: var(--red); color: var(--red); }
+
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-nav a {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.4;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .mobile-nav a:not(.dormant):hover { opacity: 1; color: var(--red); }
+
+    .mobile-nav a.dormant { opacity: 0.15; pointer-events: none; }
+
+    .mobile-nav .mobile-cta {
+      opacity: 1;
+      background: var(--red);
+      color: #fff;
+      padding: 0.8rem 2.5rem;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      margin-top: 1rem;
+    }
+
+    .mobile-nav .mobile-cta:hover { background: var(--red-dark); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4rem;
+    }
+
+    /* ─── HERO SLIDER ─────────────────────────────────────── */
+    .hero-slider {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+      will-change: opacity, transform;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      animation: slideKenBurns 8s ease-out forwards;
+    }
+
+    .hero-slide.exit {
+      opacity: 0;
+    }
+
+    @keyframes slideKenBurns {
+      from { transform: scale(1.07); }
+      to   { transform: scale(1.00); }
+    }
+
+    /* Slide progress indicators */
+    .slide-indicators {
+      position: absolute;
+      left: 50%;
+      bottom: 2rem;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.8s ease forwards;
+    }
+
+    .slide-indicator {
+      width: 28px;
+      height: 2px;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: width 0.3s;
+    }
+
+    .slide-indicator.active {
+      width: 52px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .slide-indicator::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    .slide-indicator.active::after {
+      animation: indicatorFill 6s linear forwards;
+    }
+
+    @keyframes indicatorFill {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.3) 0%,
+        rgba(10,10,10,0.55) 50%,
+        rgba(10,10,10,0.75) 100%
+      );
+    }
+
+    /* Diagonal red accent line */
+    .hero-accent {
+      position: absolute;
+      top: 0; right: 18%;
+      width: 1px;
+      height: 45%;
+      background: linear-gradient(to bottom, transparent, var(--red), transparent);
+      opacity: 0.5;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      max-width: 780px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s ease forwards;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 28px; height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .hero-eyebrow span {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.55);
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(2.8rem, 5vw, 5.2rem);
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s ease forwards;
+    }
+
+    .hero-title .accent-red { color: var(--red); }
+
+    .hero-sub {
+      margin-top: 1.8rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(240,237,232,0.6);
+      max-width: 480px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.85s ease forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 2.4rem;
+      margin-top: 2.8rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.05s ease forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 1rem 2.4rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.73rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .btn-ghost::after { content: '→'; transition: transform 0.2s; }
+    .btn-ghost:hover { opacity: 1; }
+    .btn-ghost:hover::after { transform: translateX(5px); }
+
+    /* Hero scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      right: 4rem;
+      bottom: 5rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.6s ease forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gray);
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-line {
+      width: 1px; height: 54px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.25; transform: scaleY(0.7) translateY(-5px); }
+      50%       { opacity: 1;    transform: scaleY(1)   translateY(0);    }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ─── TICKER ─────────────────────────────────────────────── */
+    .ticker {
+      background: var(--red);
+      padding: 0.75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      animation: tickerScroll 22s linear infinite;
+    }
+
+    .ticker-track span {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      color: #fff;
+      padding: 0 1.8rem;
+    }
+
+    .ticker-track .dot {
+      color: rgba(255,255,255,0.45);
+      padding: 0 0.4rem;
+    }
+
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION SCAFFOLDING ────────────────────────────────── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px; height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .section-label span {
+      font-size: 0.66rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────────────── */
+    .about {
+      padding: 9rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-heading {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      margin-bottom: 2rem;
+    }
+
+    .about-body {
+      color: rgba(240,237,232,0.6);
+      font-size: 0.93rem;
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-body strong { color: var(--white); font-weight: 400; }
+
+    .about-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.2rem;
+    }
+
+    .about-tag::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat {
+      padding: 1.8rem 0;
+      border-right: 1px solid var(--border);
+      padding-right: 1.5rem;
+      margin-right: 1.5rem;
+    }
+
+    .stat:last-child { border-right: none; margin-right: 0; }
+
+    .stat-number {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3.8rem;
+      line-height: 1;
+      color: var(--red);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* About image block */
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-main {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+    }
+
+    .about-img-inset {
+      position: absolute;
+      bottom: -2.5rem;
+      left: -2.5rem;
+      width: 220px;
+      height: 160px;
+      object-fit: cover;
+      border: 4px solid var(--black);
+    }
+
+    .about-location-pill {
+      position: absolute;
+      top: 1.5rem;
+      right: -1.2rem;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.2rem;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    /* ─── SERVICES ───────────────────────────────────────────── */
+    .services {
+      padding: 9rem 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+    }
+
+    .services-heading {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      line-height: 0.95;
+    }
+
+    .services-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(240,237,232,0.45);
+      max-width: 280px;
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      padding: 3.2rem 2.8rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.35s;
+    }
+
+    .service-card:last-child { border-right: none; }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s ease;
+    }
+
+    .service-card:hover { background: rgba(255,255,255,0.018); }
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .service-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 5rem;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      position: absolute;
+      top: 1.5rem; right: 1.8rem;
+    }
+
+    .service-icon-wrap {
+      width: 44px; height: 44px;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon-wrap svg {
+      width: 100%; height: 100%;
+      stroke: var(--red);
+      fill: none;
+      stroke-width: 1.2;
+      stroke-linecap: round;
+    }
+
+    .service-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.4rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.2rem;
+      color: var(--white);
+    }
+
+    .service-desc {
+      font-size: 0.875rem;
+      color: rgba(240,237,232,0.52);
+      line-height: 1.85;
+    }
+
+    .service-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .service-list li {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: rgba(240,237,232,0.45);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .service-list li::before {
+      content: '';
+      display: block;
+      width: 14px; height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* ─── PORTFOLIO ──────────────────────────────────────────── */
+    .portfolio {
+      padding: 9rem 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+    }
+
+    .portfolio-heading {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      line-height: 0.95;
+    }
+
+    .portfolio-filter {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .filter-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--gray);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      border-color: var(--red);
+      color: var(--white);
+      background: rgba(204,17,17,0.1);
+    }
+
+    /* Asymmetric grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 340px 300px;
+      gap: 4px;
+    }
+
+    .proj { position: relative; overflow: hidden; }
+
+    .proj:nth-child(1) { grid-column: 1 / 6;  grid-row: 1 / 2; }
+    .proj:nth-child(2) { grid-column: 6 / 9;  grid-row: 1 / 2; }
+    .proj:nth-child(3) { grid-column: 9 / 13; grid-row: 1 / 2; }
+    .proj:nth-child(4) { grid-column: 1 / 5;  grid-row: 2 / 3; }
+    .proj:nth-child(5) { grid-column: 5 / 9;  grid-row: 2 / 3; }
+    .proj:nth-child(6) { grid-column: 9 / 13; grid-row: 2 / 3; }
+
+    .proj img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.65s ease;
+    }
+
+    .proj:hover img { transform: scale(1.07); }
+
+    .proj-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.2) 45%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.6rem;
+    }
+
+    .proj:hover .proj-overlay { opacity: 1; }
+
+    .proj-cat {
+      font-size: 0.63rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+
+    .proj-name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.45rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    /* ─── FEATURED STRIP ─────────────────────────────────────── */
+    .featured-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .featured-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .featured-strip:hover .featured-image img { transform: scale(1.04); }
+
+    .featured-content {
+      padding: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--deep);
+    }
+
+    .featured-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.2rem;
+    }
+
+    .featured-heading {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3.2rem;
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-body {
+      font-size: 0.88rem;
+      color: rgba(240,237,232,0.55);
+      line-height: 1.85;
+      max-width: 380px;
+    }
+
+    .featured-meta {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-item span:first-child {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .meta-item span:last-child {
+      font-size: 0.88rem;
+      color: var(--white);
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    .contact {
+      padding: 9rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-heading {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+      line-height: 0.95;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: rgba(240,237,232,0.5);
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      padding: 1.4rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-row:last-child { border-bottom: 1px solid var(--border); }
+
+    .c-label {
+      font-size: 0.63rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--red);
+      min-width: 80px;
+      padding-top: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    .c-val {
+      font-size: 0.9rem;
+      color: rgba(240,237,232,0.75);
+      line-height: 1.65;
+    }
+
+    .c-val a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .c-val a:hover { color: var(--red); }
+
+    /* Form */
+    .contact-form-wrap {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      padding: 3rem;
+    }
+
+    .form-head {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.9rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-sub {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .field {
+      margin-bottom: 1.3rem;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.55rem;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 0.55rem 0;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus { border-bottom-color: var(--red); }
+
+    .field textarea { resize: none; height: 72px; }
+
+    .field select { cursor: pointer; }
+    .field select option { background: #111; color: var(--white); }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 0.5rem;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-submit:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      padding: 2.8rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo img { height: 38px; width: auto; mix-blend-mode: screen; }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-nav a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: var(--red); }
+
+    /* Red bottom border */
+    .footer-bar {
+      height: 3px;
+      background: var(--red);
+    }
+
+    /* ─── MAP SECTION ────────────────────────────────────────── */
+    .map-section {
+      position: relative;
+      height: 420px;
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .map-section iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      /* Invert + hue-rotate gives a dark map look */
+      filter: invert(90%) hue-rotate(180deg) saturate(0.6) brightness(0.85);
+      display: block;
+    }
+
+    /* Re-invert just the map labels so text stays readable */
+    .map-overlay-pin {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* Info card floating on the map */
+    .map-card {
+      position: absolute;
+      top: 50%;
+      left: 4rem;
+      transform: translateY(-50%);
+      background: rgba(10,10,10,0.92);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      padding: 1.8rem 2rem;
+      z-index: 2;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      max-width: 280px;
+    }
+
+    .map-card-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .map-card-name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+      line-height: 1.1;
+    }
+
+    .map-card-address {
+      font-size: 0.8rem;
+      color: rgba(240,237,232,0.6);
+      line-height: 1.7;
+    }
+
+    .map-directions {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      text-decoration: none;
+      pointer-events: all;
+      transition: gap 0.2s;
+    }
+
+    .map-directions:hover { gap: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .map-section { height: 340px; }
+      .map-card {
+        left: 1rem; right: 1rem;
+        top: auto; bottom: 1.5rem;
+        transform: none;
+        max-width: none;
+      }
+    }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.22s; }
+    .reveal-delay-3 { transition-delay: 0.34s; }
+
+    /* ─── QUOTE MODAL ────────────────────────────────────────── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      z-index: 800;
+      pointer-events: none;
+      transition: background 0.45s ease;
+    }
+    .modal-backdrop.open {
+      background: rgba(0,0,0,0.65);
+      pointer-events: all;
+    }
+
+    .quote-drawer {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(520px, 100vw);
+      background: #0f0f0f;
+      border-left: 1px solid var(--border);
+      z-index: 900;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+      overflow: hidden;
+    }
+
+    .quote-drawer.open {
+      transform: translateX(0);
+    }
+
+    /* Red top accent bar */
+    .drawer-top-bar {
+      height: 3px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .drawer-header {
+      padding: 2rem 2.4rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .drawer-header-left .drawer-eyebrow {
+      font-size: 0.62rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .drawer-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .drawer-close {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--gray);
+      width: 36px; height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      margin-top: 0.2rem;
+    }
+
+    .drawer-close:hover {
+      border-color: var(--red);
+      color: var(--white);
+      background: rgba(204,17,17,0.1);
+    }
+
+    /* Step indicator */
+    .drawer-steps {
+      padding: 1.2rem 2.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .step-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      letter-spacing: 0;
+      color: var(--gray);
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+
+    .step-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+
+    .step-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      margin: 0 0.8rem;
+      transition: background 0.3s;
+    }
+
+    .step-item.active .step-num {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .step-item.active .step-label { color: var(--white); }
+
+    .step-item.done .step-num {
+      background: rgba(204,17,17,0.15);
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    .step-item.done + .step-line,
+    .step-item.active + .step-line {
+      background: var(--red);
+    }
+
+    /* Scrollable form body */
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 2rem 2.4rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .drawer-body::-webkit-scrollbar { width: 4px; }
+    .drawer-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* Form steps (panels) */
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+
+    .step-intro {
+      margin-bottom: 2rem;
+    }
+
+    .step-intro h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3rem;
+    }
+
+    .step-intro p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* Drawer fields */
+    .d-field {
+      margin-bottom: 1.6rem;
+    }
+
+    .d-field label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.6rem;
+    }
+
+    .d-field label .req {
+      color: var(--red);
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    .d-field input,
+    .d-field textarea,
+    .d-field select {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 0.6rem 0;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .d-field input:focus,
+    .d-field textarea:focus,
+    .d-field select:focus {
+      border-bottom-color: var(--red);
+    }
+
+    .d-field textarea {
+      resize: none;
+      height: 90px;
+      line-height: 1.6;
+    }
+
+    .d-field select { cursor: pointer; }
+    .d-field select option { background: #111; color: var(--white); }
+
+    .d-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    /* Radio/checkbox tile group */
+    .tile-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .tile-option {
+      border: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      user-select: none;
+    }
+
+    .tile-option:hover { border-color: rgba(204,17,17,0.4); }
+
+    .tile-option.selected {
+      border-color: var(--red);
+      background: rgba(204,17,17,0.07);
+    }
+
+    .tile-check {
+      width: 14px; height: 14px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .tile-option.selected .tile-check {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .tile-option.selected .tile-check::after {
+      content: '✓';
+      color: #fff;
+      font-size: 0.6rem;
+    }
+
+    .tile-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: rgba(240,237,232,0.7);
+    }
+
+    .tile-option.selected .tile-label { color: var(--white); }
+
+    /* Budget/timeline select pills */
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+
+    .pill-option {
+      border: 1px solid var(--border);
+      padding: 0.45rem 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .pill-option:hover { border-color: rgba(204,17,17,0.4); color: var(--white); }
+
+    .pill-option.selected {
+      border-color: var(--red);
+      background: rgba(204,17,17,0.1);
+      color: var(--white);
+    }
+
+    /* Drawer footer */
+    .drawer-footer {
+      padding: 1.5rem 2.4rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      gap: 1rem;
+    }
+
+    .drawer-back {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--gray);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.4rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .drawer-back:hover { border-color: var(--white); color: var(--white); }
+
+    .drawer-next {
+      flex: 1;
+      background: var(--red);
+      border: none;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .drawer-next:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+    .drawer-next .arrow { transition: transform 0.2s; }
+    .drawer-next:hover .arrow { transform: translateX(4px); }
+
+    /* Success state */
+    .drawer-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: 3rem 2.4rem;
+      gap: 1.2rem;
+    }
+
+    .drawer-success.show { display: flex; }
+
+    .success-icon {
+      width: 64px; height: 64px;
+      border: 1px solid var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--red);
+      animation: successPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes successPop {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .success-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .success-body {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .success-close {
+      margin-top: 1rem;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.7rem 2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .success-close:hover { border-color: var(--red); color: var(--red); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .about { grid-template-columns: 1fr; gap: 3.5rem; padding: 5rem 3rem; }
+      .about-visual { order: -1; }
+      .about-img-inset { display: none; }
+      .about-location-pill { display: none; }
+
+      .featured-strip { grid-template-columns: 1fr; }
+      .featured-content { padding: 3rem; }
+
+      .contact { grid-template-columns: 1fr; gap: 3.5rem; padding: 5rem 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      #nav { padding: 0.5rem 1.2rem; }
+      #nav.scrolled { padding: 0.4rem 1.2rem; }
+      .nav-logo img { height: 46px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+
+      .hero { padding: 0 1.5rem; }
+      .hero-scroll { display: none; }
+      .hero-accent { display: none; }
+
+      .about { padding: 4.5rem 1.5rem; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
+
+      .services { padding: 4.5rem 1.5rem; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .services-note { text-align: left; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { border-right: none; border-bottom: 1px solid var(--border); }
+
+      .portfolio { padding: 4.5rem 1.5rem; }
+      .portfolio-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .portfolio-filter { flex-wrap: wrap; }
+      .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 200px);
+        gap: 3px;
+      }
+      .proj { grid-column: auto !important; grid-row: auto !important; }
+      .proj:nth-child(1) { grid-column: 1 / 3 !important; }
+
+      .featured-strip { grid-template-columns: 1fr; }
+      .featured-image { height: 260px; }
+      .featured-content { padding: 2.5rem 1.5rem; }
+      .featured-heading { font-size: 2.2rem; }
+
+      .contact { padding: 4.5rem 1.5rem; }
+      .contact-form-wrap { padding: 2rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
+      .footer-nav { justify-content: center; }
+
+      .cursor, .cursor-ring { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ─── NAV ─────────────────────────────────────────────────── -->
+  <nav id="nav">
+    <div class="nav-logo">
+      <a href="#"><img src="images/Logo.jpg" alt="Arcscene Architects (K) Ltd"></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="dormant">About</a></li>
+      <li><a href="#" class="dormant">Services</a></li>
+      <li><a href="#" class="dormant">Projects</a></li>
+      <li><a href="#" class="dormant">Contact</a></li>
+      <li><a href="#" class="nav-cta" id="openQuote">Get a Quote</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── MOBILE NAV ──────────────────────────────────────────── -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&#x2715;</button>
+    <a href="#" class="dormant">About</a>
+    <a href="#" class="dormant">Services</a>
+    <a href="#" class="dormant">Projects</a>
+    <a href="#" class="dormant">Contact</a>
+    <a href="#" class="mobile-cta" id="openQuoteMobile">Get a Quote</a>
+  </div>
+
+  <!-- ─── HERO ──────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-slider">
+      <div class="hero-slide active" style="background-image:url('images/482224713_1305253164102894_8341431391914025069_n.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/481988550_1305252950769582_5473036750822261699_n.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/482228770_2583239001881336_9055031479256525723_n.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/480325945_2565057297032840_4554446642606173748_n.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/480877869_1305252947436249_3684706204528199077_n.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/474608026_1280900143204863_2689915746802423068_n.jpg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-accent"></div>
+    <div class="slide-indicators">
+      <div class="slide-indicator active"></div>
+      <div class="slide-indicator"></div>
+      <div class="slide-indicator"></div>
+      <div class="slide-indicator"></div>
+      <div class="slide-indicator"></div>
+      <div class="slide-indicator"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span>Nairobi, Kenya &nbsp;·&nbsp; BORAQs Registered</span>
+      </div>
+      <h1 class="hero-title">
+        Building <span class="accent-red">Visions.</span><br>
+        Defining Spaces.
+      </h1>
+      <p class="hero-sub">Architecture that transforms the ordinary into the extraordinary — from concept to completion.</p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-ghost">Start a Project</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ─── TICKER ────────────────────────────────────────────────── -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Architecture</span><span class="dot">·</span>
+      <span>Interiors</span><span class="dot">·</span>
+      <span>Planning</span><span class="dot">·</span>
+      <span>Nairobi, Kenya</span><span class="dot">·</span>
+      <span>BORAQs Registered</span><span class="dot">·</span>
+      <span>Residential</span><span class="dot">·</span>
+      <span>Commercial</span><span class="dot">·</span>
+      <span>Institutional</span><span class="dot">·</span>
+      <span>Project Management</span><span class="dot">·</span>
+      <!-- duplicate for seamless loop -->
+      <span>Architecture</span><span class="dot">·</span>
+      <span>Interiors</span><span class="dot">·</span>
+      <span>Planning</span><span class="dot">·</span>
+      <span>Nairobi, Kenya</span><span class="dot">·</span>
+      <span>BORAQs Registered</span><span class="dot">·</span>
+      <span>Residential</span><span class="dot">·</span>
+      <span>Commercial</span><span class="dot">·</span>
+      <span>Institutional</span><span class="dot">·</span>
+      <span>Project Management</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- ─── ABOUT ──────────────────────────────────────────────────── -->
+  <section class="about reveal" id="about">
+    <div class="about-left">
+      <div class="section-label"><span>About the Firm</span></div>
+      <h2 class="about-heading">Designed with Purpose.<br>Built to Last.</h2>
+      <p class="about-body">
+        <strong>Arcscene Architects (K) Ltd</strong> is a BORAQs-registered architectural firm based in Nairobi, Kenya. Led by Managing Director <strong>J. Mwaniki</strong>, we deliver design excellence across residential, commercial, institutional, and recreational developments throughout Kenya.
+      </p>
+      <p class="about-body">
+        From first sketch to final handover, we manage every phase — architectural design, interior planning, project supervision, and delivery. Our team brings precision, creativity, and a deep understanding of the Kenyan built environment to every commission.
+      </p>
+      <span class="about-tag">Vision Plaza, 5th Floor · Mombasa Road, Nairobi</span>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-number" data-target="15" data-suffix="+">0</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="100" data-suffix="+">0</span>
+          <span class="stat-label">Projects Delivered</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="4" data-suffix="">0</span>
+          <span class="stat-label">Sector Types</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <img class="about-img-main" src="images/482228770_2583239001881336_9055031479256525723_n.jpg" alt="Completed residential project by Arcscene Architects">
+      <img class="about-img-inset" src="images/481667042_2571376366400933_3980928286602758610_n.jpg" alt="Interior design by Arcscene">
+      <div class="about-location-pill">Nairobi · Kenya</div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ───────────────────────────────────────────────── -->
+  <section class="services reveal" id="services">
+    <div class="services-header">
+      <div>
+        <div class="section-label"><span>What We Do</span></div>
+        <h2 class="services-heading">Our Services</h2>
+      </div>
+      <p class="services-note">A full-spectrum studio — from concept to keys in hand.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <div class="service-icon-wrap">
+          <!-- Architecture icon -->
+          <svg viewBox="0 0 44 44">
+            <polygon points="22,4 40,38 4,38"/>
+            <line x1="22" y1="4" x2="22" y2="38"/>
+            <line x1="13" y1="22" x2="31" y2="22"/>
+          </svg>
+        </div>
+        <h3 class="service-title">Architecture</h3>
+        <p class="service-desc">From feasibility and concept design through to working drawings and construction supervision — we design buildings that respond to site, climate, and client vision.</p>
+        <ul class="service-list">
+          <li>Concept Design &amp; Feasibility</li>
+          <li>Working Drawings &amp; Documentation</li>
+          <li>Construction Supervision</li>
+          <li>Regulatory Approvals</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <div class="service-icon-wrap">
+          <!-- Interiors icon -->
+          <svg viewBox="0 0 44 44">
+            <rect x="6" y="6" width="32" height="32" rx="1"/>
+            <line x1="6" y1="18" x2="38" y2="18"/>
+            <line x1="22" y1="18" x2="22" y2="38"/>
+            <circle cx="14" cy="12" r="2" fill="currentColor" stroke="none" style="fill:var(--red)"/>
+          </svg>
+        </div>
+        <h3 class="service-title">Interiors</h3>
+        <p class="service-desc">Thoughtful interior design that extends the architectural language into every room — space planning, material selection, lighting, and bespoke joinery.</p>
+        <ul class="service-list">
+          <li>Space Planning &amp; Layout</li>
+          <li>Material &amp; Finish Specification</li>
+          <li>Bespoke Joinery &amp; Furniture</li>
+          <li>Lighting Design</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <div class="service-icon-wrap">
+          <!-- Planning icon -->
+          <svg viewBox="0 0 44 44">
+            <rect x="8" y="8" width="28" height="28" rx="1"/>
+            <line x1="8" y1="16" x2="36" y2="16"/>
+            <line x1="8" y1="24" x2="36" y2="24"/>
+            <line x1="16" y1="8" x2="16" y2="36"/>
+          </svg>
+        </div>
+        <h3 class="service-title">Planning</h3>
+        <p class="service-desc">End-to-end project management ensuring on-time, on-budget delivery. We coordinate consultants, navigate county approvals, and maintain quality from groundbreaking to handover.</p>
+        <ul class="service-list">
+          <li>Project Programming &amp; Scheduling</li>
+          <li>Consultant Coordination</li>
+          <li>County &amp; Statutory Approvals</li>
+          <li>Cost Management</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── PORTFOLIO ──────────────────────────────────────────────── -->
+  <section class="portfolio reveal" id="portfolio">
+    <div class="portfolio-header">
+      <div>
+        <div class="section-label"><span>Selected Work</span></div>
+        <h2 class="portfolio-heading">Our Projects</h2>
+      </div>
+      <div class="portfolio-filter">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Residential</button>
+        <button class="filter-btn">Commercial</button>
+        <button class="filter-btn">Interiors</button>
+      </div>
+    </div>
+    <div class="portfolio-grid">
+
+      <div class="proj">
+        <img src="images/482224713_1305253164102894_8341431391914025069_n.jpg" alt="Neo-Classical Residence render">
+        <div class="proj-overlay">
+          <span class="proj-cat">Residential · Architectural Render</span>
+          <span class="proj-name">Neo-Classical Residence</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <img src="images/481988550_1305252950769582_5473036750822261699_n.jpg" alt="Grand Villa render">
+        <div class="proj-overlay">
+          <span class="proj-cat">Residential · Render</span>
+          <span class="proj-name">Grand Villa Project</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <img src="images/480325945_2565057297032840_4554446642606173748_n.jpg" alt="Modern Townhouses">
+        <div class="proj-overlay">
+          <span class="proj-cat">Residential · Development</span>
+          <span class="proj-name">Contemporary Townhouses</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <img src="images/481667042_2571376366400933_3980928286602758610_n.jpg" alt="Luxury Interior">
+        <div class="proj-overlay">
+          <span class="proj-cat">Interiors · Residential</span>
+          <span class="proj-name">Luxury Interior Fit-Out</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <img src="images/480877869_1305252947436249_3684706204528199077_n.jpg" alt="Modern Family Bungalow">
+        <div class="proj-overlay">
+          <span class="proj-cat">Residential · Render</span>
+          <span class="proj-name">Modern Family Bungalow</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <img src="images/474608026_1280900143204863_2689915746802423068_n.jpg" alt="Institutional Development">
+        <div class="proj-overlay">
+          <span class="proj-cat">Institutional · Commercial</span>
+          <span class="proj-name">Institutional Development</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── FEATURED STRIP ─────────────────────────────────────────── -->
+  <div class="featured-strip reveal">
+    <div class="featured-image">
+      <img src="images/482228770_2583239001881336_9055031479256525723_n.jpg" alt="Completed residential project — Thika Greens">
+    </div>
+    <div class="featured-content">
+      <div class="featured-tag">Featured Project · Built Work</div>
+      <h3 class="featured-heading">Thika Greens<br>Residential House</h3>
+      <p class="featured-body">A completed two-storey residence combining modern design with natural stone cladding. The project was delivered with full architectural design, structural coordination, and construction supervision — from permit to handover.</p>
+      <div class="featured-meta">
+        <div class="meta-item">
+          <span>Type</span>
+          <span>Residential</span>
+        </div>
+        <div class="meta-item">
+          <span>Location</span>
+          <span>Thika Greens, Kenya</span>
+        </div>
+        <div class="meta-item">
+          <span>Scope</span>
+          <span>Full Design + Supervision</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CONTACT ────────────────────────────────────────────────── -->
+  <section class="contact reveal" id="contact">
+    <div class="contact-left">
+      <div class="section-label"><span>Get In Touch</span></div>
+      <h2 class="contact-heading">Let's Build Something<br>Remarkable.</h2>
+      <p class="contact-sub">Ready to bring your project to life? Tell us what you're envisioning.</p>
+
+      <div class="contact-info">
+        <div class="contact-row">
+          <span class="c-label">Location</span>
+          <span class="c-val">5th Floor, Suite 11<br>Vision Plaza, Mombasa Road<br>Nairobi, Kenya</span>
+        </div>
+        <div class="contact-row">
+          <span class="c-label">Phone</span>
+          <span class="c-val"><a href="tel:+254722962845">+254 722 962 845</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="c-label">Email</span>
+          <span class="c-val"><a href="mailto:arc@arcscene.com">arc@arcscene.com</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="c-label">Social</span>
+          <span class="c-val"><a href="https://www.facebook.com/profile.php?id=100038546696061" target="_blank" rel="noopener">Facebook — Arcscene Architects Limited</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="c-label">Registration</span>
+          <span class="c-val">BORAQs — Board of Registration of Architects &amp; Quantity Surveyors, Kenya</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <div class="contact-form-wrap">
+        <div class="form-head">Send Us a Message</div>
+        <p class="form-sub">We'll get back to you within 24 hours.</p>
+        <form>
+          <div class="form-row">
+            <div class="field">
+              <label>Full Name</label>
+              <input type="text" placeholder="Your name">
+            </div>
+            <div class="field">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="+254 ...">
+            </div>
+          </div>
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="field">
+            <label>Project Type</label>
+            <select>
+              <option value="">Select project type</option>
+              <option>Residential</option>
+              <option>Commercial</option>
+              <option>Institutional</option>
+              <option>Interior Design</option>
+              <option>Recreational</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Message</label>
+            <textarea placeholder="Tell us about your project — location, size, and timeline..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MAP ───────────────────────────────────────────────────── -->
+  <div class="map-section">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7479112365527!2d36.85015617516111!3d-1.3272284356726218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1194a5eb834f%3A0x6d44542ced54bca2!2sVision%20plaza!5e0!3m2!1sen!2ske!4v1775818218464!5m2!1sen!2ske"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Arcscene Architects Location — Vision Plaza, Mombasa Road, Nairobi">
+    </iframe>
+    <div class="map-card">
+      <span class="map-card-label">Our Office</span>
+      <div class="map-card-name">Arcscene Architects (K) Ltd</div>
+      <p class="map-card-address">
+        5th Floor, Suite 11<br>
+        Vision Plaza, Mombasa Road<br>
+        Nairobi, Kenya<br><br>
+        +254 722 962 845
+      </p>
+      <a class="map-directions" href="https://maps.app.goo.gl/1W9G7xssToz16wHM9" target="_blank" rel="noopener">
+        Get Directions &#8594;
+      </a>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-logo">
+      <img src="images/Logo.jpg" alt="Arcscene Architects (K) Ltd">
+    </div>
+    <span class="footer-copy">© 2025 Arcscene Architects (K) Ltd. All rights reserved.</span>
+    <nav class="footer-nav">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </footer>
+  <div class="footer-bar"></div>
+
+  <!-- ─── QUOTE DRAWER ───────────────────────────────────────────── -->
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+
+  <div class="quote-drawer" id="quoteDrawer" role="dialog" aria-modal="true" aria-label="Get a Quote">
+    <div class="drawer-top-bar"></div>
+
+    <div class="drawer-header">
+      <div class="drawer-header-left">
+        <span class="drawer-eyebrow">Start Your Project</span>
+        <div class="drawer-title">Get a Quote</div>
+      </div>
+      <button class="drawer-close" id="closeDrawer" aria-label="Close">&#x2715;</button>
+    </div>
+
+    <div class="drawer-steps" id="drawerSteps">
+      <div class="step-item active" data-step="0">
+        <div class="step-num">1</div>
+        <span class="step-label">You</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-item" data-step="1">
+        <div class="step-num">2</div>
+        <span class="step-label">Project</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-item" data-step="2">
+        <div class="step-num">3</div>
+        <span class="step-label">Details</span>
+      </div>
+    </div>
+
+    <div class="drawer-body" id="drawerBody">
+
+      <!-- Step 1: Contact Info -->
+      <div class="form-step active" id="step-0">
+        <div class="step-intro">
+          <h3>Your Contact Details</h3>
+          <p>Tell us who you are so we can get back to you.</p>
+        </div>
+        <div class="d-row">
+          <div class="d-field">
+            <label>First Name <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. James">
+          </div>
+          <div class="d-field">
+            <label>Last Name <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Mwangi">
+          </div>
+        </div>
+        <div class="d-field">
+          <label>Email Address <span class="req">*</span></label>
+          <input type="email" placeholder="you@example.com">
+        </div>
+        <div class="d-field">
+          <label>Phone Number <span class="req">*</span></label>
+          <input type="tel" placeholder="+254 7XX XXX XXX">
+        </div>
+        <div class="d-field">
+          <label>How did you hear about us?</label>
+          <select>
+            <option value="">Select an option</option>
+            <option>Referral / Word of mouth</option>
+            <option>Facebook</option>
+            <option>Instagram</option>
+            <option>Google Search</option>
+            <option>Seen our work</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Step 2: Project Type -->
+      <div class="form-step" id="step-1">
+        <div class="step-intro">
+          <h3>About Your Project</h3>
+          <p>Help us understand the scope and nature of your project.</p>
+        </div>
+        <div class="d-field">
+          <label>Project Type <span class="req">*</span></label>
+          <div class="tile-group">
+            <div class="tile-option" data-value="residential">
+              <div class="tile-check"></div>
+              <span class="tile-label">Residential</span>
+            </div>
+            <div class="tile-option" data-value="commercial">
+              <div class="tile-check"></div>
+              <span class="tile-label">Commercial</span>
+            </div>
+            <div class="tile-option" data-value="institutional">
+              <div class="tile-check"></div>
+              <span class="tile-label">Institutional</span>
+            </div>
+            <div class="tile-option" data-value="interiors">
+              <div class="tile-check"></div>
+              <span class="tile-label">Interiors</span>
+            </div>
+            <div class="tile-option" data-value="recreational">
+              <div class="tile-check"></div>
+              <span class="tile-label">Recreational</span>
+            </div>
+            <div class="tile-option" data-value="other">
+              <div class="tile-check"></div>
+              <span class="tile-label">Other</span>
+            </div>
+          </div>
+        </div>
+        <div class="d-field" style="margin-top:1.8rem">
+          <label>Service Required <span class="req">*</span></label>
+          <div class="tile-group">
+            <div class="tile-option" data-value="full-design">
+              <div class="tile-check"></div>
+              <span class="tile-label">Full Design</span>
+            </div>
+            <div class="tile-option" data-value="supervision">
+              <div class="tile-check"></div>
+              <span class="tile-label">Supervision Only</span>
+            </div>
+            <div class="tile-option" data-value="interior-only">
+              <div class="tile-check"></div>
+              <span class="tile-label">Interiors Only</span>
+            </div>
+            <div class="tile-option" data-value="consultation">
+              <div class="tile-check"></div>
+              <span class="tile-label">Consultation</span>
+            </div>
+          </div>
+        </div>
+        <div class="d-field" style="margin-top:1.8rem">
+          <label>Project Location</label>
+          <input type="text" placeholder="e.g. Kiambu, Nairobi, Mombasa...">
+        </div>
+      </div>
+
+      <!-- Step 3: Budget & Brief -->
+      <div class="form-step" id="step-2">
+        <div class="step-intro">
+          <h3>Scope &amp; Budget</h3>
+          <p>A rough idea of your budget and timeline helps us tailor our approach.</p>
+        </div>
+        <div class="d-field">
+          <label>Estimated Budget (KES)</label>
+          <div class="pill-group">
+            <div class="pill-option" data-value="under-2m">Under 2M</div>
+            <div class="pill-option" data-value="2m-5m">2M – 5M</div>
+            <div class="pill-option" data-value="5m-15m">5M – 15M</div>
+            <div class="pill-option" data-value="15m-50m">15M – 50M</div>
+            <div class="pill-option" data-value="50m+">50M+</div>
+            <div class="pill-option" data-value="tbd">Not sure yet</div>
+          </div>
+        </div>
+        <div class="d-field" style="margin-top:1.8rem">
+          <label>Preferred Start Timeline</label>
+          <div class="pill-group">
+            <div class="pill-option" data-value="asap">As soon as possible</div>
+            <div class="pill-option" data-value="1-3m">1 – 3 months</div>
+            <div class="pill-option" data-value="3-6m">3 – 6 months</div>
+            <div class="pill-option" data-value="6m+">6+ months</div>
+            <div class="pill-option" data-value="planning">Still planning</div>
+          </div>
+        </div>
+        <div class="d-field" style="margin-top:1.8rem">
+          <label>Project Brief</label>
+          <textarea placeholder="Describe your vision — size, style preferences, number of rooms, special requirements..."></textarea>
+        </div>
+        <div class="d-field">
+          <label>Plot / Land Status</label>
+          <select>
+            <option value="">Select an option</option>
+            <option>I own the land / plot</option>
+            <option>In the process of buying land</option>
+            <option>Looking for land</option>
+            <option>Renovating an existing structure</option>
+            <option>Not applicable</option>
+          </select>
+        </div>
+      </div>
+
+    </div><!-- end drawer-body -->
+
+    <!-- Success state (hidden initially) -->
+    <div class="drawer-success" id="drawerSuccess">
+      <div class="success-icon">✓</div>
+      <div class="drawer-title">Enquiry Received</div>
+      <p class="success-body">Thank you for reaching out to Arcscene Architects. We'll review your project brief and get back to you within 24 hours.</p>
+      <button class="success-close" id="successClose">Close</button>
+    </div>
+
+    <div class="drawer-footer" id="drawerFooter">
+      <button class="drawer-back" id="drawerBack" style="display:none">&#8592; Back</button>
+      <button class="drawer-next" id="drawerNext">
+        Next <span class="arrow">&#8594;</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ─── SCRIPTS ────────────────────────────────────────────────── -->
+  <script>
+    // ── Nav scroll effect ────────────────────────────────────────
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Hero Slider ──────────────────────────────────────────────
+    (function () {
+      const slides     = document.querySelectorAll('.hero-slide');
+      const indicators = document.querySelectorAll('.slide-indicator');
+      const INTERVAL   = 6000;
+      let current = 0;
+      let timer;
+
+      function goTo(idx) {
+        // Remove active/exit from old
+        slides[current].classList.remove('active');
+        slides[current].classList.add('exit');
+        indicators[current].classList.remove('active');
+
+        // After fade-out, clean up exit class and reset ken-burns
+        const prev = current;
+        setTimeout(() => {
+          slides[prev].classList.remove('exit');
+          // Force reflow so the next activation restarts the animation
+          void slides[prev].offsetWidth;
+        }, 1500);
+
+        current = idx;
+
+        // Activate new slide
+        slides[current].classList.add('active');
+        indicators[current].classList.add('active');
+      }
+
+      function next() { goTo((current + 1) % slides.length); }
+
+      function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, INTERVAL);
+      }
+
+      // Click indicators to jump
+      indicators.forEach((dot, i) => {
+        dot.addEventListener('click', () => { goTo(i); startTimer(); });
+      });
+
+      startTimer();
+    })();
+
+    // ── Bi-directional scroll reveal ─────────────────────────────
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        } else {
+          // Only reset when element has gone back below the viewport
+          // (user scrolled up — element dropped off the bottom)
+          if (e.boundingClientRect.top > 0) {
+            e.target.classList.remove('visible');
+          }
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // ── Animated counters ────────────────────────────────────────
+    function animateCounter(el) {
+      const target  = parseInt(el.dataset.target, 10);
+      const suffix  = el.dataset.suffix || '';
+      const duration = 1800;
+      const step     = 16;
+      const steps    = duration / step;
+      const inc      = target / steps;
+      let current    = 0;
+
+      const tick = setInterval(() => {
+        current = Math.min(current + inc, target);
+        el.textContent = Math.round(current) + suffix;
+        if (current >= target) clearInterval(tick);
+      }, step);
+    }
+
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCounter(e.target);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObs.observe(el));
+
+    // ── Custom cursor ────────────────────────────────────────────
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursorRing');
+    let rx = 0, ry = 0, cx = 0, cy = 0;
+
+    document.addEventListener('mousemove', e => {
+      cx = e.clientX; cy = e.clientY;
+      cursor.style.left = cx + 'px';
+      cursor.style.top  = cy + 'px';
+    }, { passive: true });
+
+    (function animateRing() {
+      rx += (cx - rx) * 0.12;
+      ry += (cy - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animateRing);
+    })();
+
+    document.querySelectorAll('a, button, .proj, .service-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.style.width  = '56px';
+        ring.style.height = '56px';
+        ring.style.borderColor = 'rgba(204,17,17,0.8)';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.width  = '36px';
+        ring.style.height = '36px';
+        ring.style.borderColor = 'rgba(204,17,17,0.5)';
+      });
+    });
+
+    // ── Portfolio filter (visual only) ───────────────────────────
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // ── Mobile hamburger ─────────────────────────────────────────
+    const hamburger = document.getElementById('navHamburger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function closeMobileNav() {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close button inside mobile nav
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileNav);
+
+    // Close mobile nav on ESC
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeMobileNav();
+    });
+
+    // ── Smooth anchor scroll ─────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ── Quote Drawer ─────────────────────────────────────────────
+    (function () {
+      const drawer    = document.getElementById('quoteDrawer');
+      const backdrop  = document.getElementById('modalBackdrop');
+      const openBtn   = document.getElementById('openQuote');
+      const closeBtn  = document.getElementById('closeDrawer');
+      const nextBtn   = document.getElementById('drawerNext');
+      const backBtn   = document.getElementById('drawerBack');
+      const footer    = document.getElementById('drawerFooter');
+      const stepsEl   = document.getElementById('drawerSteps');
+      const bodyEl    = document.getElementById('drawerBody');
+      const successEl = document.getElementById('drawerSuccess');
+      const successClose = document.getElementById('successClose');
+      const stepItems = document.querySelectorAll('.step-item');
+      const TOTAL     = 3;
+      let current     = 0;
+
+      function openDrawer() {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        goToStep(0);
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function goToStep(n) {
+        // Hide all steps
+        document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+        // Show target step
+        const target = document.getElementById('step-' + n);
+        if (target) target.classList.add('active');
+
+        // Update step indicators
+        stepItems.forEach((item, i) => {
+          item.classList.remove('active', 'done');
+          if (i < n)      item.classList.add('done');
+          else if (i === n) item.classList.add('active');
+        });
+
+        // Back button visibility
+        backBtn.style.display = n > 0 ? 'block' : 'none';
+
+        // Next button label
+        if (n === TOTAL - 1) {
+          nextBtn.innerHTML = 'Submit Enquiry <span class="arrow">&#10003;</span>';
+        } else {
+          nextBtn.innerHTML = 'Next <span class="arrow">&#8594;</span>';
+        }
+
+        // Scroll body to top
+        bodyEl.scrollTop = 0;
+        current = n;
+      }
+
+      function showSuccess() {
+        stepsEl.style.display  = 'none';
+        bodyEl.style.display   = 'none';
+        footer.style.display   = 'none';
+        successEl.classList.add('show');
+      }
+
+      // Tile selection (single-select per group)
+      document.querySelectorAll('.tile-group').forEach(group => {
+        group.querySelectorAll('.tile-option').forEach(tile => {
+          tile.addEventListener('click', () => {
+            group.querySelectorAll('.tile-option').forEach(t => t.classList.remove('selected'));
+            tile.classList.add('selected');
+          });
+        });
+      });
+
+      // Pill selection (single-select per group)
+      document.querySelectorAll('.pill-group').forEach(group => {
+        group.querySelectorAll('.pill-option').forEach(pill => {
+          pill.addEventListener('click', () => {
+            group.querySelectorAll('.pill-option').forEach(p => p.classList.remove('selected'));
+            pill.classList.add('selected');
+          });
+        });
+      });
+
+      // Events
+      openBtn.addEventListener('click', e => { e.preventDefault(); openDrawer(); });
+
+      // Mobile CTA also opens drawer
+      const openBtnMobile = document.getElementById('openQuoteMobile');
+      if (openBtnMobile) {
+        openBtnMobile.addEventListener('click', e => {
+          e.preventDefault();
+          closeMobileNav();
+          openDrawer();
+        });
+      }
+      closeBtn.addEventListener('click', closeDrawer);
+      backdrop.addEventListener('click', closeDrawer);
+      successClose.addEventListener('click', closeDrawer);
+
+      nextBtn.addEventListener('click', () => {
+        if (current < TOTAL - 1) {
+          goToStep(current + 1);
+        } else {
+          showSuccess();
+        }
+      });
+
+      backBtn.addEventListener('click', () => {
+        if (current > 0) goToStep(current - 1);
+      });
+
+      // Step indicator click
+      stepItems.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          if (i <= current) goToStep(i);
+        });
+      });
+
+      // ESC to close
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeDrawer();
+      });
+    })();
+  </script>
+</body>
+</html>
